@@ -1,24 +1,18 @@
-import { createStore } from 'vuex'
+import { defineStore } from 'pinia'
 
-export default createStore({
-  state: {
-    count: 0,
+export const useCounterStore = defineStore({
+  id: 'counter',
+  state() {
+    return {
+      count: 0,
+    }
   },
-  mutations: {
-    increaseCount(state) {
-      state.count++
-    },
-    decreaseCount(state) {
-      state.count--
-    },
-  },
-  getters: {},
   actions: {
-    increaseCount({ commit }) {
-      commit('increaseCount')
+    increaseCount() {
+      this.count++
     },
-    decreaseCount({ commit }) {
-      commit('decreaseCount')
+    decreaseCount() {
+      this.count--
     },
   },
 })
